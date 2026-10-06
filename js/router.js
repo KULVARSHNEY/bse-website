@@ -32,6 +32,7 @@ window.Router = {
           ${window.Components.EnquirySection()}
           ${window.Components.AboutSection()}
           ${window.Components.ServicesSection()}
+          ${window.Components.ValuableCustomersSection()}
           ${window.Components.WhyChooseUsSection()}
         </main>
       `;
@@ -64,6 +65,22 @@ window.Router = {
         `;
         seoTitle = study.seo.title;
         seoDesc = study.seo.description;
+      } else {
+        pageContentHtml = this.render404();
+      }
+    } else if (hash.startsWith('#/products/') || hash.startsWith('#/product/')) {
+      // Product Detail Page
+      const slug = hash.replace(/^#\/(products|product)\//, '');
+      const product = window.CONFIG.products[slug] || (Array.isArray(window.CONFIG.products) ? window.CONFIG.products.find(p => p.slug === slug) : null);
+      
+      if (product) {
+        pageContentHtml = `
+          <main>
+            ${window.Components.ProductDetail(product)}
+          </main>
+        `;
+        seoTitle = (product.seo && product.seo.title) ? product.seo.title : `${product.title || product.name} | ${window.CONFIG.company.name}`;
+        seoDesc = (product.seo && product.seo.description) ? product.seo.description : (product.intro || product.shortDescription);
       } else {
         pageContentHtml = this.render404();
       }

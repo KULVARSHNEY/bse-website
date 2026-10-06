@@ -1,11 +1,11 @@
 // Centralized Data Configuration for Corporate Engineering Web App
 window.CONFIG = {
   company: {
-    name: "Best Electrical Solution",
-    logoText: "Best Electrical Solution",
-    phone: "+91 7014471607",
-    email: "bse.power29@gmail.com",
-    address: "302, Phase II, Industrial Area, Malviya Nagar, Jaipur, Rajasthan, India - 302017",
+    name: "Krapali Electrocraft",
+    logoText: "Krapali Electrocraft",
+    phone: "+91 9045882142",
+    email: "krapalielectrocraft@gmail.com",
+    address: "Jaipur, Rajasthan",
     workingHours: "Monday – Saturday: 9:00 AM – 6:00 PM (Sunday Closed)",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56983.83401569429!2d75.7872709121731!3d26.85614343161314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db608d4b313ef%3A0x6b0ff22b8214ec0e!2sMalviya%20Nagar%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716180000000!5m2!1sen!2sin"
   },
@@ -63,19 +63,370 @@ window.CONFIG = {
     }
   ],
 
-  products: [
-    { name: "Industrial Plug & Socket", slug: "industrial-plug-socket" },
-    { name: "Power Distribution Boards", slug: "power-distribution-boards" },
-    { name: "Polycarbonate Distribution customised DB", slug: "polycarbonate-distribution-customised-db" },
-    { name: "RTPFC Panel", slug: "rtpfc-panel" },
-    { name: "APFC Panel", slug: "apfc-panel" },
-    { name: "Hybrid Power quality System", slug: "hybrid-power-quality-system" },
-    { name: "Active Filters", slug: "active-filters" },
-    { name: "Shunt reactor (for leading PF solution)", slug: "shunt-reactor-leading-pf-solution" },
-    { name: "Lighting Automation", slug: "lighting-automation" }
-  ],
+  products: {
+    "industrial-plug-socket": {
+      slug: "industrial-plug-socket",
+      name: "Industrial Plug & Socket",
+      title: "Industrial Plug & Socket Solutions",
+      shortDescription: "High-grade industrial IP44/IP67 plugs, sockets, and interlocked combinations for harsh industrial environments.",
+      intro: "Heavy-duty industrial plugs, sockets, and interlocked switch sockets built for reliable, safe power connections across harsh manufacturing, construction, and outdoor sites.",
+      image: "images/industrial plug and socket.jpeg",
+      photos: [
+        "images/industrial plug and socket.jpeg"
+      ],
+      imagePlaceholderText: "Industrial Plug & Socket",
+      seo: {
+        title: "Industrial Plug & Socket Solutions | Krapali Electrocraft",
+        description: "Heavy-duty industrial plugs, sockets, and interlocked combinations with IP44/IP67 ingress protection."
+      },
+      whyChooseUs: [
+        { title: "IP44 / IP67 Ingress Protection", desc: "Engineered to resist heavy moisture, chemical washdowns, and conductive dust intrusion." },
+        { title: "High Mechanical Impact Strength", desc: "Constructed with impact-resistant polyamide material for rugged factory floors." },
+        { title: "Self-Cleaning Contacts", desc: "Nickel-plated brass pins and beryllium copper sleeves ensure low contact resistance and zero arcing." },
+        { title: "Interlocked Safety Features", desc: "Prevents plug withdrawal under electrical load, protecting operators from hazardous flashovers." }
+      ],
+      comprehensive: [
+        "Available in 16A, 32A, 63A, and 125A ratings with 2P+E, 3P+E, and 3P+N+E pin configurations.",
+        "Standard voltage codings (230V Blue, 415V Red, 110V Yellow) per IEC 60309-1 / 60309-2 standards.",
+        "Interlocked receptacle enclosures with built-in miniature circuit breakers (MCBs) or RCBOs.",
+        "Wall mounting, panel mounting, and mobile trailing cable versions.",
+        "Flame retardant, UV-stabilized thermoplastic housing with high thermal endurance.",
+        "Tool-free quick-lock wiring terminals for rapid and secure cable termination."
+      ],
+      benefits: [
+        "Significantly eliminates operator shock risks and arc flashes during frequent equipment changeovers.",
+        "Provides watertight seal in washdown zones, outdoor terminals, and marine installations.",
+        "Minimizes electrical contact overheating and prevents socket burning.",
+        "Reduces maintenance downtime with modular drop-in replacement pins and sleeves."
+      ]
+    },
+    "power-distribution-boards": {
+      slug: "power-distribution-boards",
+      name: "Power Distribution Boards",
+      title: "Industrial Power Distribution Boards (PDB)",
+      shortDescription: "Custom engineered electrical distribution boards engineered for optimal load balancing, circuit protection, and safety.",
+      intro: "Robust main and sub-distribution panels engineered with high short-circuit withstand capabilities, modular compartmentalization, and high-performance protection gear.",
+      image: "images/power distribution board.jpeg",
+      photos: [
+        "images/power distribution board.jpeg"
+      ],
+      imagePlaceholderText: "Power Distribution Board",
+      seo: {
+        title: "Power Distribution Boards (PDB) | Krapali Electrocraft",
+        description: "Custom engineered power distribution boards up to Form 4b construction with CPRI-tested busbars."
+      },
+      whyChooseUs: [
+        { title: "CPRI Tested Busbar Arrangements", desc: "High electrolytic copper and aluminum busbars engineered for short-circuit withstand up to 50kA." },
+        { title: "Modular Form Separation", desc: "Manufactured up to Form 4b construction for segregated busbar, cable, and switchgear chambers." },
+        { title: "IP54 / IP55 Weatherproof Enclosures", desc: "CNC-fabricated CRCA sheet steel with multi-stage pre-treatment and electrostatic powder coating." },
+        { title: "Smart Metering & Telemetry", desc: "Integrated digital multi-function meters with RS485 Modbus for remote energy monitoring." }
+      ],
+      comprehensive: [
+        "Incomers featuring Air Circuit Breakers (ACB) or Molded Case Circuit Breakers (MCCB) up to 4000A.",
+        "Outgoing feeders with motorized MCCBs, MCBs, MPCB motor feeders, and contactors.",
+        "Segregated neutral and earth busbars sized to accommodate 200% non-linear harmonic return currents.",
+        "Digital metering for voltage, current, power factor, active power, and total harmonic distortion (THD).",
+        "Neoprene gasket sealing, interlocked door handles, and safety acrylic flash barriers.",
+        "Full factory routine testing: insulation resistance, dielectric withstand, and temperature rise verification."
+      ],
+      benefits: [
+        "Prevents cascading electrical trips by offering precise discrimination between breaker stages.",
+        "Protects plant personnel during routine inspection via physical internal compartmentalization.",
+        "Maximizes continuous plant uptime with hot-standby changeover and auto-transfer mechanisms.",
+        "Guarantees compliance with CEA 2010 safety regulations and IS/IEC 61439 standards."
+      ]
+    },
+    "polycarbonate-distribution-customised-db": {
+      slug: "polycarbonate-distribution-customised-db",
+      name: "Polycarbonate Distribution customised DB",
+      title: "Custom Polycarbonate Distribution Boards",
+      shortDescription: "Corrosion-proof, high-impact polycarbonate distribution boxes custom configured with receptacles, MCBs, and isolators.",
+      intro: "Fully customized non-metallic distribution panels made from high-grade engineering polycarbonate, offering 100% rust immunity, double insulation, and high ingress protection.",
+      image: "images/polycarbonate distribution solution.jpeg",
+      photos: [
+        "images/polycarbonate distribution solution.jpeg"
+      ],
+      imagePlaceholderText: "Polycarbonate Distribution DB",
+      seo: {
+        title: "Custom Polycarbonate Distribution Boards | Krapali Electrocraft",
+        description: "Non-metallic, corrosion-proof polycarbonate distribution panels custom configured with sockets and circuit protection."
+      },
+      whyChooseUs: [
+        { title: "100% Corrosion & Rust Free", desc: "Polycarbonate material eliminates rust, making it ideal for chemical plants, mines, and coastal regions." },
+        { title: "Double Insulated Class II Safety", desc: "Non-conductive enclosure walls eliminate electric shock hazards from internal insulation failures." },
+        { title: "Transparent Inspection Covers", desc: "Impact-resistant clear polycarbonate windows allow visual breaker status checks without opening the door." },
+        { title: "Bespoke Receptacle Configurations", desc: "Tailored combinations of industrial sockets (16A, 32A, 63A) with integrated MCB/ELCB protection." }
+      ],
+      comprehensive: [
+        "Modular enclosure dimensions with IP65 / IP67 silicone gasket sealing.",
+        "Built-in DIN rails accommodating single-phase and three-phase miniature circuit breakers.",
+        "UV-resistant, halogen-free, and self-extinguishing polycarbonate compliant with UL94 V-0.",
+        "Pre-wired internal wiring using high-temperature, heat-resistant multi-strand copper cables.",
+        "Integrated rotary isolator switches or main lockable disconnect switches on the exterior.",
+        "Available in wall-mounting, pedestal stand, or portable carry-handle configurations for job sites."
+      ],
+      benefits: [
+        "Zero painting or rust maintenance required throughout the entire operational lifecycle.",
+        "Outstanding mechanical impact protection (IK08 / IK10) on harsh industrial construction sites.",
+        "Lightweight design simplifies installation on walls, structural pillars, and mobile work stations.",
+        "Guarantees maximum operator safety with total electrical insulation."
+      ]
+    },
+    "rtpfc-panel": {
+      slug: "rtpfc-panel",
+      name: "RTPFC Panel",
+      title: "Real-Time Power Factor Correction (RTPFC) Panel",
+      shortDescription: "Ultra-fast thyristor-switched capacitor panels delivering instantaneous reactive compensation within 1-2 cycles.",
+      intro: "State-of-the-art solid-state power factor correction panels employing thyristor switching modules to compensate ultra-fast, fluctuating inductive loads like welding machines, cranes, and robotic lines.",
+      image: "images/RTPFC panel .jpeg",
+      photos: [
+        "images/RTPFC panel .jpeg",
+        "images/RTFC Panel.jpeg"
+      ],
+      imagePlaceholderText: "RTPFC Panel",
+      seo: {
+        title: "Real-Time Power Factor Correction (RTPFC) Panels | Krapali Electrocraft",
+        description: "Transient-free thyristor switched power factor panels responding within 5-20 milliseconds."
+      },
+      whyChooseUs: [
+        { title: "Transient-Free Zero Cross Switching", desc: "Thyristor modules switch capacitors precisely at voltage zero-crossing, eliminating inrush currents and voltage spikes." },
+        { title: "Sub-Cycle Response Time (5-20 ms)", desc: "Corrects power factor within milliseconds, keeping up with spot welders, elevators, and induction furnaces." },
+        { title: "Extended Capacitor Lifespan", desc: "Elimination of mechanical contactor arcing extends capacitor cell life by over 300%." },
+        { title: "Detuned Harmonic Blocking Reactors", desc: "Integrated heavy copper reactors protect capacitors from harmonic resonance and thermal burnout." }
+      ],
+      comprehensive: [
+        "Fast micro-controller-based real-time reactive power compensation controller.",
+        "Thyristor solid-state switches with built-in heat sinks, thermal cutoffs, and cooling fans.",
+        "Heavy-duty MPP/gas-filled capacitor units with burst-proof disconnectors.",
+        "7%, 5.67%, or 14% detuned harmonic filter reactors calibrated to plant harmonic profile.",
+        "Digital display displaying instantaneous PF, kVAR required, current THD, and step status.",
+        "Compartmentalized cooling airflow design ensuring safe temperature control during peak load cycles."
+      ],
+      benefits: [
+        "Eliminates utility reactive power penalties on rapidly fluctuating industrial processes.",
+        "Prevents flicker and voltage drops during sudden heavy motor or welder starts.",
+        "Eliminates contactor replacement costs and frequent capacitor breakdowns.",
+        "Stabilizes DC busbars and reduces harmonic stress on transformers and switchgear."
+      ]
+    },
+    "apfc-panel": {
+      slug: "apfc-panel",
+      name: "APFC Panel",
+      title: "Automatic Power Factor Control (APFC) Panel",
+      shortDescription: "Microprocessor-driven automated capacitor panels engineered to maintain near-unity power factor and eliminate penalties.",
+      intro: "High-efficiency automatic power factor compensation systems designed to continuously monitor reactive power demand and dynamically switch capacitor stages to secure utility rebates.",
+      image: "images/APFC panel.jpeg",
+      photos: [
+        "images/APFC panel.jpeg"
+      ],
+      imagePlaceholderText: "APFC Panel",
+      seo: {
+        title: "Automatic Power Factor Control (APFC) Panels | Krapali Electrocraft",
+        description: "Multi-stage APFC panels with detuned harmonic filters to maintain unity power factor."
+      },
+      whyChooseUs: [
+        { title: "Maintains Unity Power Factor (0.99)", desc: "Intelligent stepped switching ensures your plant stays eligible for top utility power factor discounts." },
+        { title: "Specialized Capacitor Duty Contactors", desc: "Equipped with damping resistors and auxiliary contacts to absorb initial switching surges." },
+        { title: "Harmonic Suppression Reactors", desc: "Detuned iron-core reactors prevent parallel resonance and protect against 5th/7th harmonic amplification." },
+        { title: "Intelligent Step Cycling", desc: "Controller rotates step sequence to equalize operating hours across all capacitor banks." }
+      ],
+      comprehensive: [
+        "Automatic multi-stage PF controller supporting 8, 12, 14, or 16 symmetrical or binary steps.",
+        "Low-loss, self-healing metallized polypropylene (MPP) capacitors with overpressure safety.",
+        "Heavy copper busbar matrix rated for 1.5x continuous overcurrent capacity.",
+        "Thermal protection with internal ambient thermostat and high-CFM exhaust fan louvers.",
+        "Comprehensive alarms: under-voltage, over-voltage, high THD, step failure, and over-temperature.",
+        "Manual / Auto selector switch for straightforward testing and commissioned servicing."
+      ],
+      benefits: [
+        "Completely eliminates monthly utility low power factor penalty charges.",
+        "Reduces apparent power (kVA) demand, freeing up transformer capacity for factory expansion.",
+        "Lowers technical distribution I²R losses in internal cabling and transformers.",
+        "Rapid investment payback, typically achieved in 6 to 12 months from utility bill savings."
+      ]
+    },
+    "hybrid-power-quality-system": {
+      slug: "hybrid-power-quality-system",
+      name: "Hybrid Power quality System",
+      title: "Hybrid Power Quality Management System",
+      shortDescription: "Cutting-edge hybrid architecture combining Active Harmonic Filters with fast capacitor banks for comprehensive power correction.",
+      intro: "An advanced, unified power quality solution integrating solid-state Active Harmonic Filters (AHF) with detuned capacitor banks to mitigate harmonics, balance phases, and correct power factor in one compact system.",
+      image: "images/detune harmonic reactor.jpeg",
+      photos: [
+        "images/detune harmonic reactor.jpeg",
+        "images/active filters.jpeg"
+      ],
+      imagePlaceholderText: "Hybrid Power Quality System",
+      seo: {
+        title: "Hybrid Power Quality Management Systems | Krapali Electrocraft",
+        description: "Combined active harmonic filters and detuned capacitor banks for simultaneous harmonic mitigation and power factor correction."
+      },
+      whyChooseUs: [
+        { title: "Dual Harmonics & Reactive Correction", desc: "Eliminates harmful harmonic currents while delivering dynamic reactive power compensation." },
+        { title: "Optimized Total Cost of Ownership", desc: "Uses cost-effective capacitors for bulk reactive power and active electronics for harmonic cancellation." },
+        { title: "Three-Phase Load Balancing", desc: "Actively balances current across phases, mitigating neutral current buildup and transformer heating." },
+        { title: "Compliance with IEEE 519-2022", desc: "Guarantees Total Harmonic Distortion of Current (THDi) remains well below statutory 5% limits." }
+      ],
+      comprehensive: [
+        "Modular IGBT-based active filter modules running high-frequency DSP control algorithms.",
+        "Automatic detuned capacitor stages for baseline displacement power factor correction.",
+        "High-accuracy split-core current transformers monitoring incoming feeder waveforms.",
+        "7-inch color touchscreen HMI with waveform displays, harmonic spectrums, and energy logging.",
+        "Dynamic stepless compensation of leading and lagging reactive power within sub-cycle speeds.",
+        "Communication interfaces: Modbus RTU, Ethernet TCP/IP, and IoT cloud dashboard integration."
+      ],
+      benefits: [
+        "Protects sensitive automation, PLCs, and drive systems from erratic tripping and harmonic distortion.",
+        "Eliminates transformer overheating, neutral cable overload, and premature component degradation.",
+        "Ensures full regulatory compliance with utility grid standards and BEE quality mandates.",
+        "Lower capital expenditure compared to full active filter systems while providing superior performance."
+      ]
+    },
+    "active-filters": {
+      slug: "active-filters",
+      name: "Active Filters",
+      title: "Active Harmonic Filters (AHF)",
+      shortDescription: "High-speed DSP-controlled solid-state filters providing real-time cancellation of harmonic frequencies up to the 50th order.",
+      intro: "State-of-the-art power electronics solutions that dynamically inject equal-and-opposite harmonic currents to actively neutralize electrical distortion produced by variable frequency drives (VFDs), UPS, and rectifiers.",
+      image: "images/active filters.jpeg",
+      photos: [
+        "images/active filters.jpeg"
+      ],
+      imagePlaceholderText: "Active Harmonic Filter",
+      seo: {
+        title: "Active Harmonic Filters (AHF) | Krapali Electrocraft",
+        description: "Real-time mitigation of 2nd to 50th order harmonics with sub-5ms response time and three-phase load balancing."
+      },
+      whyChooseUs: [
+        { title: "Eliminates 2nd through 50th Harmonics", desc: "Selectively or comprehensively mitigates all orders of harmonic frequencies simultaneously." },
+        { title: "Ultra-Fast Response (<5 ms)", desc: "Instantaneously adapts to dynamic, rapidly shifting non-linear loads with zero resonance risk." },
+        { title: "Modular & Scalable Rack Architecture", desc: "Hot-swappable 30A, 50A, 100A, and 150A modules allow easy capacity expansion as plant loads grow." },
+        { title: "Programmable Compensation Priorities", desc: "Configure prioritizations between harmonic mitigation, reactive power compensation, and phase balancing." }
+      ],
+      comprehensive: [
+        "3-Level NPC inverter topology delivering high efficiency (>97.5%) and low thermal losses.",
+        "Digital Signal Processor (DSP) with FPGA architecture for ultra-high sampling rates (20 kHz+).",
+        "Simultaneous compensation of both current harmonics and displacement power factor (cos φ).",
+        "Zero resonance risk with existing plant capacitors or utility grid impedances.",
+        "Touchscreen graphical display with full harmonic spectrum analysis up to the 50th harmonic.",
+        "Built-in protections against overcurrent, overvoltage, short circuit, and IGBT over-temperature."
+      ],
+      benefits: [
+        "Eliminates erratic PLC reboots, sensor glitches, and communication bus errors.",
+        "Prevents power factor capacitors and detuned reactors from premature thermal burnout.",
+        "Reduces heat dissipation in power transformers, switchboards, and distribution cables.",
+        "Achieves strict compliance with IEEE 519-2022 guidelines and CEA regulations."
+      ]
+    },
+    "shunt-reactor-leading-pf-solution": {
+      slug: "shunt-reactor-leading-pf-solution",
+      name: "Shunt reactor (for leading PF solution)",
+      title: "Shunt Reactor Systems for Leading Power Factor Correction",
+      shortDescription: "Engineered inductive compensation reactors designed to absorb excess capacitive charging current and prevent leading PF penalties.",
+      intro: "High-linearity iron-core and air-core shunt reactor systems engineered to compensate for capacitive charging currents generated by long underground cables, lightly loaded transformers, and data center UPS systems.",
+      image: "images/shunt reactor.jpeg",
+      photos: [
+        "images/shunt reactor.jpeg"
+      ],
+      imagePlaceholderText: "Shunt Reactor Panel",
+      seo: {
+        title: "Shunt Reactor Leading Power Factor Solutions | Krapali Electrocraft",
+        description: "Inductive compensation reactors to eliminate leading power factor penalties under kVAh billing tariffs."
+      },
+      whyChooseUs: [
+        { title: "Eliminates Leading PF Penalties", desc: "Neutralizes capacitive reactive energy (kVArh) to prevent expensive utility penalty charges on modern kVAh billing." },
+        { title: "Stabilizes Line Voltage Profiles", desc: "Suppresses Ferranti effect and prevents terminal overvoltage during light load and night shifts." },
+        { title: "High-Linearity Magnetic Core", desc: "Low-loss magnetic laminations maintain linear inductance even during severe voltage variations." },
+        { title: "Automatic Stepped or Solid-State Switching", desc: "Integrated controller switches reactor stages precisely as plant load drops to maintain target PF." }
+      ],
+      comprehensive: [
+        "Custom ratings from 5 kVAR up to 500 kVAR for 415V, 3.3kV, 6.6kV, and 11kV distribution systems.",
+        "Class H insulation with high-temperature varnish vacuum pressure impregnation (VPI).",
+        "Copper and electrolytic grade aluminum winding configurations with electrostatic screening.",
+        "Built-in thermal protection with embedded RTD temperature sensors and trip relays.",
+        "Low acoustic noise design with precision air-gapped core construction.",
+        "Available as freestanding panel assemblies or modular indoor/outdoor enclosures."
+      ],
+      benefits: [
+        "Stops utility penalties under kVAh billing tariff regimes where leading power factor is billed as a penalty.",
+        "Prevents dangerous voltage rise on long underground HT/LT distribution cable networks.",
+        "Reduces generator trip risks caused by reverse reactive power flow during grid outages.",
+        "Improves overall transformer life expectancy and operational stability."
+      ]
+    },
+    "lighting-automation": {
+      slug: "lighting-automation",
+      name: "Lighting Automation",
+      title: "Industrial & Commercial Lighting Automation Systems",
+      shortDescription: "Smart energy-saving lighting control panels with astronomical timers, daylight harvesting, and occupancy sensing.",
+      intro: "Centralized intelligent lighting control systems designed to dramatically slash electricity consumption across industrial warehouses, high bays, office complexes, and exterior perimeter lighting.",
+      image: "",
+      photos: [],
+      imagePlaceholderText: "Lighting Automation System",
+      seo: {
+        title: "Industrial Lighting Automation Systems | Krapali Electrocraft",
+        description: "Intelligent astronomical timer and sensor-based lighting control panels saving up to 60% energy."
+      },
+      whyChooseUs: [
+        { title: "Astronomical Time Clock Automation", desc: "Automatically calculates daily sunset and sunrise times to control street and perimeter lighting with zero manual intervention." },
+        { title: "Daylight Harvesting & Dimming", desc: "Integrates lux sensors to dynamically adjust indoor high bay light levels based on ambient natural sunlight." },
+        { title: "Substantial Energy Savings (30-60%)", desc: "Eliminates lighting waste in unoccupied storage bays, production zones, and exterior pathways." },
+        { title: "Centralized Remote Scheduling & SCADA", desc: "Manage zones, override schedules, and track energy usage via web dashboard or mobile app." }
+      ],
+      comprehensive: [
+        "Multi-channel lighting control panels with latching contactors and manual override switches.",
+        "Astronomical digital clocks, motion detectors, and outdoor photocell sensors.",
+        "0-10V, DALI-2, and wireless mesh control protocols for individual fixture dimming.",
+        "Dedicated energy metering logging kWh consumption per lighting circuit.",
+        "Programmable scene controls: Production Shift, Cleaning Mode, Night Security, and Emergency Off.",
+        "Enclosure built to IP55 / IP65 standard for reliable operation in dusty industrial environments."
+      ],
+      benefits: [
+        "Slashes lighting electricity consumption by up to 60%, yielding immediate utility bill reductions.",
+        "Prolongs the operating lifetime of LED luminaires by minimizing burning hours and heat buildup.",
+        "Eliminates human error associated with manual switches being left on during daylight hours.",
+        "Improves facility safety and security through consistent, automated illumination scheduling."
+      ]
+    }
+  },
 
   team: [],
+
+  // Valuable Customers / Client Organizations
+  // To add a new customer, place your image in the "images/" folder and add an entry below:
+  // e.g.: { name: "Company Name", logo: "images/company_name.jpeg", category: "Industry Category" }
+  valuableCustomers: [
+    {
+      name: "Indian Air Force",
+      logo: "images/airforce.jpeg",
+      category: "Defense & Aerospace"
+    },
+    {
+      name: "Indian Railways",
+      logo: "images/indian_railway.jpeg",
+      category: "Public Sector & Transportation"
+    },
+    {
+      name: "Ministry of Defence",
+      logo: "images/ministry_of_defense.jpeg",
+      category: "Government of India"
+    },
+    {
+      name: "Wonder Cement",
+      logo: "images/wonder_cement.jpeg",
+      category: "Heavy Industry & Manufacturing"
+    },
+    {
+      name: "Hero MotoCorp",
+      logo: "images/hero.jpeg",
+      category: "Automotive & Manufacturing"
+    },
+    {
+      name: "Nitin Spinners",
+      logo: "images/nitin.jpeg",
+      category: "Textiles & Manufacturing"
+    }
+  ],
 
   services: {
     "electrical-audit": {

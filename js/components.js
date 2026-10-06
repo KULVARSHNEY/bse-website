@@ -5,12 +5,13 @@ window.Components = {
     const company = window.CONFIG.company;
     const services = Object.values(window.CONFIG.services).sort((a, b) => a.navOrder - b.navOrder);
     const studies = Object.values(window.CONFIG.studies);
-    const products = window.CONFIG.products;
+    const products = Array.isArray(window.CONFIG.products) ? window.CONFIG.products : Object.values(window.CONFIG.products);
     const team = window.CONFIG.team;
     
     // Helper to determine if a route group is active
     const isServicesActive = activePath.startsWith('#/services/');
     const isStudiesActive = activePath.startsWith('#/study/');
+    const isProductsActive = activePath.startsWith('#/products/') || activePath.startsWith('#/product/');
     const isHomeActive = activePath === '#/' || activePath === '';
     const isContactActive = activePath === '#/contact';
 
@@ -20,7 +21,7 @@ window.Components = {
     `).join('');
 
     const productItems = products.map(product => `
-      <li><a href="#/contact" class="dropdown-item">${product.name}</a></li>
+      <li><a href="#/products/${product.slug}" class="dropdown-item ${activePath === '#/products/' + product.slug || activePath === '#/product/' + product.slug ? 'active' : ''}">${product.name || product.title}</a></li>
     `).join('');
 
     // Generate dropdown items for Studies
@@ -80,7 +81,7 @@ window.Components = {
                   <a href="#/" class="nav-link">Home</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item ${isProductsActive ? 'active' : ''}">
                   <a class="nav-link" id="products-dropdown-toggle">Products <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
                   <ul class="dropdown-menu" id="products-menu">
                     ${productItems}
@@ -313,6 +314,83 @@ window.Components = {
     `;
   },
 
+  // Valuable Customers Component
+  ValuableCustomersSection: function() {
+    const rawCustomers = window.CONFIG.valuableCustomers || [];
+    if (!rawCustomers.length) return '';
+
+    const customerCards = rawCustomers.map(customer => {
+      // Support object or string formats
+      const isString = typeof customer === 'string';
+      const logo = isString ? customer : (customer.logo || '');
+      let name = !isString && customer.name ? customer.name : '';
+      if (!name && logo) {
+        // Derive company name from filename
+        const filename = logo.split('/').pop().replace(/\.[^/.]+$/, "");
+        name = filename.replace(/[_-]/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+      }
+      const category = (!isString && customer.category) ? customer.category : 'Valued Client';
+
+      return `
+        <div class="customer-card">
+          <div class="customer-logo-wrap">
+            <img src="${logo}" alt="${name} Logo" class="customer-logo-img" loading="lazy"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="customer-logo-fallback" style="display:none;">
+              <i class="fa-solid fa-building-columns"></i>
+              <span>${name}</span>
+            </div>
+          </div>
+          <h4 class="customer-name">${name}</h4>
+          ${category ? `<span class="customer-category">${category}</span>` : ''}
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <section class="section section-customers reveal" id="valuable-customers">
+        <div class="container">
+          <div class="text-center">
+            <div>
+              <span class="customers-badge-tag"><i class="fa-solid fa-handshake"></i> Trusted Partnerships</span>
+            </div>
+            <h2>Our Valuable Customers</h2>
+            <p class="customers-subtitle">
+              Proudly trusted by leading government institutions, defense establishments, and manufacturing enterprises for professional power quality studies, electrical safety, and energy audits.
+            </p>
+          </div>
+          <div class="customers-grid">
+            ${customerCards}
+          </div>
+
+          <div class="customers-trust-bar">
+            <div class="trust-bar-item">
+              <i class="fa-solid fa-shield-halved trust-bar-icon"></i>
+              <div class="trust-bar-text">
+                <h5>BEE & CEA Aligned</h5>
+                <p>Strict compliance with national electrical safety & energy standards</p>
+              </div>
+            </div>
+            <div class="trust-bar-item">
+              <i class="fa-solid fa-chart-line trust-bar-icon"></i>
+              <div class="trust-bar-text">
+                <h5>Zero-Disruption Audits</h5>
+                <p>Non-contact infrared thermography & online disturbance logging</p>
+              </div>
+            </div>
+            <div class="trust-bar-item">
+              <i class="fa-solid fa-award trust-bar-icon"></i>
+              <div class="trust-bar-text">
+                <h5>Proven Industry Track Record</h5>
+                <p>Deep engineering expertise across heavy manufacturing & defense sectors</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  },
+
   // Why Choose Us Component
   WhyChooseUsSection: function() {
     const points = [
@@ -531,6 +609,143 @@ window.Components = {
                 <h3>Need Professional ${item.title}?</h3>
                 <p>Contact our engineering desk in Jaipur to discuss parameters, timelines, and custom quotes.</p>
                 <a href="#/contact" class="btn btn-accent btn-sm">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  },
+
+  // Product Dedicated Detail Page Template
+  ProductDetail: function(product) {
+    const breadcrumbs = this.Breadcrumbs(product.title || product.name, 'Products');
+    const company = window.CONFIG.company;
+
+    // Generate Why Choose Us points
+    const wcuList = (product.whyChooseUs || []).map(p => `
+      <div class="wcu-item" style="background-color: var(--color-light-bg);">
+        <div class="wcu-icon-box" style="background-color:rgba(0, 50, 98, 0.08); color:var(--color-primary);"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="wcu-content">
+          <h4 style="color:var(--color-primary);">${p.title}</h4>
+          <p style="font-size: 0.9rem;">${p.desc}</p>
+        </div>
+      </div>
+    `).join('');
+
+    // Generate comprehensive list checklist
+    const checklistItems = (product.comprehensive || []).map(c => `
+      <li class="checklist-li">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>${c}</span>
+      </li>
+    `).join('');
+
+    // Generate benefits list checklist
+    const benefitsList = (product.benefits || []).map(b => `
+      <li class="checklist-li">
+        <i class="fa-solid fa-circle-check" style="color:var(--color-success);"></i>
+        <span>${b}</span>
+      </li>
+    `).join('');
+
+    // Photos handling
+    const mainImage = product.image || (product.photos && product.photos.length > 0 ? product.photos[0] : '');
+    const photosList = product.photos || (mainImage ? [mainImage] : []);
+
+    return `
+      <section class="inner-hero">
+        <div class="container">
+          ${breadcrumbs}
+          <h1>${product.title || product.name}</h1>
+          <p class="subtitle">${product.intro || product.shortDescription}</p>
+        </div>
+      </section>
+      
+      <section class="section">
+        <div class="container">
+          <div class="detail-grid">
+            <div>
+              <h2 style="margin-bottom:2rem;">Why Choose Our ${product.name || product.title}?</h2>
+              <div class="grid-2" style="grid-template-columns:1fr; gap:1.5rem; margin-bottom:3.5rem;">
+                ${wcuList}
+              </div>
+              
+              <div class="checklist-box" style="margin-bottom:3rem;">
+                <h3>Key Features & Technical Specifications</h3>
+                <ul class="checklist-ul">
+                  ${checklistItems}
+                </ul>
+              </div>
+              
+              <div class="checklist-box" style="background-color: #ffffff; border-left-color: var(--color-success); margin-bottom:3.5rem;">
+                <h3 style="color:var(--color-success);">Industrial Benefits & Operational Advantages</h3>
+                <ul class="checklist-ul">
+                  ${benefitsList}
+                </ul>
+              </div>
+
+              <!-- Dedicated Contact Banner with Contact Us Button -->
+              <div class="product-banner-cta">
+                <div class="product-banner-cta-content">
+                  <div class="product-banner-icon"><i class="fa-solid fa-headset"></i></div>
+                  <div>
+                    <h3>Ready to Order or Need Technical Guidance?</h3>
+                    <p>Contact our engineering sales department for customized panel configurations, pricing, and on-site delivery schedules.</p>
+                  </div>
+                </div>
+                <a href="#/contact" class="btn btn-accent btn-lg">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <div>
+              <!-- Photos Section (User requested: "just add section for photos") -->
+              <div class="product-photos-panel">
+                <div class="product-photos-header">
+                  <h4><i class="fa-solid fa-camera"></i> Product Photos</h4>
+                  <span class="photo-count-badge">${photosList.length} Photo${photosList.length === 1 ? '' : 's'}</span>
+                </div>
+                
+                <div class="product-main-photo-frame">
+                  ${mainImage ? `
+                    <img src="${mainImage}" alt="${product.imagePlaceholderText || product.title || product.name}" class="product-featured-img" id="product-featured-image" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder-box" style="display:none;">
+                      <i class="fa-solid fa-bolt-lightning"></i>
+                      <p><strong>${product.name || product.title}</strong></p>
+                      <small>Product photo preview</small>
+                    </div>
+                  ` : `
+                    <div class="photo-placeholder-box">
+                      <i class="fa-solid fa-image"></i>
+                      <p><strong>${product.name || product.title}</strong></p>
+                      <small>Add your product photo in <code>images/</code> and set path in <code>data.js</code></small>
+                    </div>
+                  `}
+                </div>
+
+                <!-- Product Photo Gallery Thumbnails -->
+                <div class="product-gallery-strip">
+                  ${photosList.map((photo, i) => `
+                    <div class="product-gallery-thumb ${i === 0 ? 'active' : ''}" onclick="const feat = document.getElementById('product-featured-image'); if(feat) feat.src = '${photo}'; document.querySelectorAll('.product-gallery-thumb').forEach(el=>el.classList.remove('active')); this.classList.add('active');">
+                      <img src="${photo}" alt="Thumbnail ${i + 1}" loading="lazy">
+                    </div>
+                  `).join('')}
+                  <div class="product-gallery-add-slot" title="Add more product photos in images/ and register them in data.js">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add Photo</span>
+                  </div>
+                </div>
+                <p class="photo-instructions"><i class="fa-solid fa-circle-info"></i> Photos stored in <code>images/</code> folder</p>
+              </div>
+
+              <!-- Sidebar Contact Us Box with Contact Us Button -->
+              <div class="sidebar-contact-box" style="margin-top:2rem;">
+                <i class="fa-solid fa-circle-question" style="font-size: 3rem; color:var(--color-accent); margin-bottom:1.5rem;"></i>
+                <h3>Need Quote or Datasheet?</h3>
+                <p>Speak directly with our technical team in Jaipur to discuss sizing, quotation, and custom enclosure specifications.</p>
+                <a href="#/contact" class="btn btn-accent btn-sm" style="width: 100%; justify-content: center; margin-bottom: 0.75rem;">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="tel:${company.phone}" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;"><i class="fa-solid fa-phone"></i> ${company.phone}</a>
               </div>
             </div>
           </div>
