@@ -1,4 +1,4 @@
-// Core Application Controller for Apex Power & Energy Solutions
+// Core Application Controller for Krapali Electro Craft
 window.App = {
   // Global reference for hero carousel timer
   carouselIntervalId: null,

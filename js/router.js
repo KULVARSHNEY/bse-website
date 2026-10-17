@@ -1,4 +1,4 @@
-// Client-Side Router for Apex Power & Energy Solutions Single Page App
+// Client-Side Router for Krapali Electro Craft Single Page App
 window.Router = {
   // Mount target element
   mountNode: null,
@@ -21,7 +21,7 @@ window.Router = {
     const hash = window.location.hash || '#/';
     let pageContentHtml = '';
     let seoTitle = window.CONFIG.company.name + " | Electrical Engineering & Energy Consulting";
-    let seoDesc = "Apex Power & Energy Solutions provides industrial electrical auditing, safety inspections, certified energy audits, and power quality solutions.";
+    let seoDesc = "Krapali Electro Craft provides industrial electrical auditing, safety inspections, certified energy audits, and power quality solutions.";
 
     // Match routes
     if (hash === '#/' || hash === '') {
@@ -91,8 +91,8 @@ window.Router = {
           ${window.Components.ContactPage()}
         </main>
       `;
-      seoTitle = "Contact Us | Apex Power & Energy Solutions";
-      seoDesc = "Get in touch with Apex Power & Energy Solutions in Jaipur for professional electrical audits, power studies, and consulting quotes.";
+      seoTitle = "Contact Us | Krapali Electro Craft";
+      seoDesc = "Get in touch with Krapali Electro Craft in Jaipur for professional electrical audits, power studies, and consulting quotes.";
     } else {
       // 404 Page
       pageContentHtml = this.render404();

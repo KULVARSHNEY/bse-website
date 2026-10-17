@@ -1,4 +1,4 @@
-// Reusable UI Components for Apex Power & Energy Solutions
+// Reusable UI Components for Krapali Electro Craft
 window.Components = {
   // Navigation / Header Component
   Header: function(activePath) {
@@ -252,7 +252,7 @@ window.Components = {
         <div class="container">
           <div class="grid-2">
             <div class="about-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="About ABC Energy Solutions" class="about-image">
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="About Krapali Electro Craft" class="about-image">
               <div class="about-experience-badge">
                 <h4>15+</h4>
                 <p>Years of Engineering</p>
@@ -261,7 +261,7 @@ window.Components = {
             
             <div>
               <h2>About Us</h2>
-              <p><strong>ABC Energy Solutions</strong> is a premium engineering consultancy focused on improving industrial electrical system reliability, energy efficiency, and operational performance. We provide systematic electrical audits, energy studies, thermographic inspections, and power-quality solutions for industrial and commercial facilities.</p>
+              <p><strong>Krapali Electro Craft</strong> is a premium engineering consultancy focused on improving industrial electrical system reliability, energy efficiency, and operational performance. We provide systematic electrical audits, energy studies, thermographic inspections, and power-quality solutions for industrial and commercial facilities.</p>
               <p>Our team comprises Bureau of Energy Efficiency (BEE) certified Energy Auditors, seasoned electrical design engineers, and certified thermographers committed to securing your operational uptime, plant safety, and utility cost efficiency.</p>
               
               <ul class="about-bullets">
