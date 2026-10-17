@@ -1,10 +1,10 @@
 // Centralized Data Configuration for Corporate Engineering Web App
 window.CONFIG = {
   company: {
-    name: "Chandni Gupta",
+    name: "Krapali Electro Craft",
     logoText: "Krapali Electro Craft",
     phone: "+91 9045882142",
-    email: "krapalielectrocraft@gmail.com",
+    email: "Chandni gupta",
     address: "Jaipur, Rajasthan",
     workingHours: "Monday – Saturday: 9:00 AM – 6:00 PM (Sunday Closed)",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56983.83401569429!2d75.7872709121731!3d26.85614343161314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db608d4b313ef%3A0x6b0ff22b8214ec0e!2sMalviya%20Nagar%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716180000000!5m2!1sen!2sin"
