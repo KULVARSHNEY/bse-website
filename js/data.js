@@ -3,7 +3,7 @@ window.CONFIG = {
   company: {
     name: "Krapali Electro Craft",
     logoText: "Krapali Electro Craft",
-    phone: "+91 9045882142",
+    phone: "+91 7014471607",
     email: "krapalielectrocraft@gmail.com",
     address: "Jaipur, Rajasthan",
     workingHours: "Monday – Saturday: 9:00 AM – 6:00 PM (Sunday Closed)",
@@ -354,6 +354,42 @@ window.CONFIG = {
         "Improves overall transformer life expectancy and operational stability."
       ]
     },
+    "detune-harmonics-block-reactors": {
+      slug: "detune-harmonics-block-reactors",
+      name: "De-tune harmonics block Reactors",
+      title: "De-tuned Harmonics Blocking Reactors (Detuned Filter Reactors)",
+      shortDescription: "Heavy-duty three-phase detuned harmonic blocking reactors engineered to prevent harmonic resonance and protect capacitor banks in non-linear power networks.",
+      intro: "High-linearity three-phase iron-core detuned harmonic blocking reactors designed to be connected in series with power factor correction capacitors, preventing electrical resonance, filtering harmonic currents, and safeguarding industrial capacitors against thermal burnout.",
+      image: "images/detune harmonic reactor.jpeg",
+      photos: [
+        "images/detune harmonic reactor.jpeg"
+      ],
+      imagePlaceholderText: "De-tune Harmonics Block Reactor",
+      seo: {
+        title: "De-tune Harmonics Block Reactors | Krapali Electro Craft",
+        description: "High-linearity 5.67%, 7%, and 14% detuned harmonic blocking filter reactors for APFC and RTPFC capacitor banks compliant with IEC 60076-6."
+      },
+      whyChooseUs: [
+        { title: "High Magnetic Linearity (>180% In)", desc: "Maintains linear inductance even under extreme harmonic current distortion and voltage surges without core saturation." },
+        { title: "Precision Detuning Factors (5.67%, 7%, 14%)", desc: "Shifts series resonant frequency safely below prevailing dominant harmonic orders (5th, 7th, 11th) to prevent resonance amplification." },
+        { title: "Class H / 200°C Thermal Endurance", desc: "Constructed with high-grade copper/aluminum conductors, Nomex insulation, and multi-air-gap CRGO cores." },
+        { title: "Vacuum Pressure Impregnation (VPI)", desc: "Treated under high vacuum with polyester resin for silent low-hum operation (<60 dB) and high dielectric strength." }
+      ],
+      comprehensive: [
+        "Available for nominal system voltages of 415V, 440V, 480V, 690V, and medium voltage applications.",
+        "Standard tuning factors: p = 7% (189 Hz series resonance), p = 5.67% (210 Hz), and p = 14% (134 Hz).",
+        "Low-loss, grain-oriented cold rolled silicon steel (CRGO) magnetic core with precision non-magnetic air gap spacers.",
+        "Built-in micro-switch thermal protection (normally-closed dry contact at 125°C/130°C) embedded inside center coil winding.",
+        "High-quality tin-plated copper terminal busbar lugs for reliable, low-resistance cable connections.",
+        "100% routine tested for inductance tolerance (±3%), temperature rise, dielectric withstand, and insulation resistance per IEC 60076-6."
+      ],
+      benefits: [
+        "Eliminates catastrophic harmonic resonance that causes power factor capacitors to explode or overheat.",
+        "Dramatically reduces inrush switching transient currents during capacitor bank energization.",
+        "Extends the operational lifespan of power factor correction capacitors and switching switchgear by up to 300%.",
+        "Absorbs a percentage of 5th and 7th harmonic currents, reducing overall plant Total Harmonic Distortion (THD)."
+      ]
+    },
     "lighting-automation": {
       slug: "lighting-automation",
       name: "Lighting Automation",
@@ -387,6 +423,42 @@ window.CONFIG = {
         "Eliminates human error associated with manual switches being left on during daylight hours.",
         "Improves facility safety and security through consistent, automated illumination scheduling."
       ]
+    },
+    "isolation-transformer": {
+      slug: "isolation-transformer",
+      name: "Isolation Transformer (1 kVA to as per required)",
+      title: "Industrial Isolation Transformers (Range 1 kVA to As Required)",
+      shortDescription: "Precision dry-type isolation transformers providing galvanic isolation, electrostatic noise attenuation, and clean local ground reference from 1 kVA up to required capacity.",
+      intro: "Engineered single-phase and three-phase dry-type isolation transformers designed to provide 100% galvanic separation, electrostatic noise shielding, and spike suppression between incoming mains and sensitive industrial equipment across ratings from 1 kVA up to customer-required capacity.",
+      image: "images/isolation-transformer.svg",
+      photos: [
+        "images/isolation-transformer.svg"
+      ],
+      imagePlaceholderText: "Isolation Transformer 1 kVA to As Required",
+      seo: {
+        title: "Isolation Transformers (1 kVA to As Required) | Krapali Electro Craft",
+        description: "Industrial galvanic isolation transformers from 1 kVA to custom ratings with Faraday electrostatic shielding, Class H insulation, and low noise design."
+      },
+      whyChooseUs: [
+        { title: "Custom Ratings (1 kVA to As Required)", desc: "Tailored manufacturing from small 1 kVA single-phase control units up to large multi-kVA three-phase industrial installations." },
+        { title: "Complete Galvanic Isolation", desc: "Physically isolates primary and secondary circuits with high dielectric breakdown strength (>2.5 kV) to prevent shock and ground loop hazards." },
+        { title: "Faraday Electrostatic Shielding", desc: "Dual electrostatic copper shields attenuate common-mode noise, spikes, and high-frequency switching surges by over 90 dB." },
+        { title: "Ultra-Clean Neutral-to-Earth Bond", desc: "Establishes a true isolated local neutral reference, reducing neutral-to-ground noise voltage (<1V) for sensitive CNC machines and server racks." }
+      ],
+      comprehensive: [
+        "Wide power capacity range: 1 kVA up to 500+ kVA in single-phase (1-ph) and three-phase (3-ph) models.",
+        "Custom input/output voltage ratios: 415V/415V, 415V/200V, 415V/110V, 480V/415V, 230V/230V, or site-specified voltages.",
+        "Premium CRGO (Cold Rolled Grain Oriented) low-loss silicon steel core with precision non-magnetic air gaps.",
+        "Vacuum Pressure Impregnation (VPI) with Class F / Class H (180°C/200°C) high-temperature insulation varnish.",
+        "Off-circuit tap changers (±2.5%, ±5%) to compensate for persistent utility supply fluctuations.",
+        "Enclosures engineered to IP21/IP23 indoor ventilated or IP54/IP55 weatherproof outdoor standards with low acoustic hum (<50 dB)."
+      ],
+      benefits: [
+        "Shields expensive PLCs, CNC drives, laser cutters, and laboratory instruments from catastrophic grid voltage transients.",
+        "Eliminates mysterious sensor glitches and communication drops caused by common-mode electrical noise.",
+        "Prevents harmonic distortion and electrical noise from non-linear plant loads reflecting back onto utility supplies.",
+        "Ensures operator safety and compliance with IS 2026, IS 11171, and IEC 61558-2-4 standards."
+      ]
     }
   },
 
@@ -399,32 +471,86 @@ window.CONFIG = {
     {
       name: "Indian Air Force",
       logo: "images/airforce.jpeg",
-      category: "Defense & Aerospace"
+      category: "Defense & Aerospace",
+      engagementTag: "Defense Infrastructure & High-Reliability Electrical Auditing",
+      desc: "Delivering mission-critical electrical safety audits, substation thermography, and uncompromised power reliability for high-security defense bases."
     },
     {
       name: "Indian Railways",
       logo: "images/indian_railway.jpeg",
-      category: "Public Sector & Transportation"
+      category: "Public Sector & Transportation",
+      engagementTag: "Traction & Safety Power Audits, Substation Analysis",
+      desc: "Conducting power quality analysis, trackside electrical audits, and non-contact thermal scans to ensure uninterrupted rail operations."
     },
     {
       name: "Ministry of Defence",
       logo: "images/ministry_of_defense.jpeg",
-      category: "Government of India"
+      category: "Government of India",
+      engagementTag: "Government Defense Establishments & Safety Verification",
+      desc: "Statutory electrical compliance verification, earthing audits, and preventive power diagnostics for vital national defense assets."
+    },
+    {
+      name: "Adani",
+      logo: "images/adani.jpeg",
+      category: "Energy, Ports & Heavy Infrastructure",
+      engagementTag: "Mega Infrastructure & Substation Power Quality Audits",
+      desc: "Large-scale energy management studies, harmonic mitigation, and electrical safety inspections across industrial and logistics infrastructure."
     },
     {
       name: "Wonder Cement",
       logo: "images/wonder_cement.jpeg",
-      category: "Heavy Industry & Manufacturing"
+      category: "Heavy Industry & Manufacturing",
+      engagementTag: "Harmonic Mitigation, Thermography & Heavy Motor Load Studies",
+      desc: "Comprehensive plant-wide electrical auditing, kiln drive harmonic studies, and transformer load balancing for heavy cement manufacturing."
     },
     {
       name: "Hero MotoCorp",
       logo: "images/hero.jpeg",
-      category: "Automotive & Manufacturing"
+      category: "Automotive & Manufacturing",
+      engagementTag: "Automated Line Power Quality & Energy Efficiency Studies",
+      desc: "Energy benchmarking and power factor stabilization across high-speed robotic welding and automotive assembly facilities."
+    },
+    {
+      name: "Bals",
+      logo: "images/bals.jpeg",
+      category: "Industrial Switchgear & Plugs",
+      engagementTag: "Industrial Plug & Socket Solutions Partner",
+      desc: "Technical collaboration for world-class IP44/IP67 industrial plugs, sockets, and customized polycarbonate distribution enclosures."
+    },
+    {
+      name: "Mennekes",
+      logo: "images/mennekens.jpeg",
+      category: "Industrial Power Connections",
+      engagementTag: "Industrial Receptacle & Power Connection Partner",
+      desc: "Certified product association providing premium heavy-duty industrial plugs, switch receptacles, and distribution combinations."
+    },
+    {
+      name: "Sinexcel",
+      logo: "images/sineexcel.jpeg",
+      category: "Active Power Electronics",
+      engagementTag: "Active Harmonic Filter & SVG Technology Partner",
+      desc: "Deployment of state-of-the-art solid-state Active Harmonic Filters (AHF) and dynamic power quality compensation systems."
+    },
+    {
+      name: "Neptune",
+      logo: "images/neptune.jpeg",
+      category: "Power Quality & Capacitor Solutions",
+      engagementTag: "Power Factor & Energy Management Solutions",
+      desc: "Technical association for high-efficiency capacitor systems, detuned filter reactors, and digital energy management."
     },
     {
       name: "Nitin Spinners",
       logo: "images/nitin.jpeg",
-      category: "Textiles & Manufacturing"
+      category: "Textiles & Manufacturing",
+      engagementTag: "Continuous Spinning Mill Energy & Electrical Audits",
+      desc: "Electrical safety assessments, thermal hot-spot profiling, and motor energy optimization for continuous textile spinning operations."
+    },
+    {
+      name: "Wings",
+      logo: "images/wings.jpeg",
+      category: "Manufacturing & Commercial Enterprise",
+      engagementTag: "Electrical Safety & Predictive Maintenance Studies",
+      desc: "Comprehensive electrical infrastructure audits, load balancing, and thermography scans to safeguard plant productivity."
     }
   ],
 

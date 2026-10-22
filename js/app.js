@@ -37,12 +37,10 @@ window.App = {
     const serviceToggle = document.getElementById('services-dropdown-toggle');
     const studyToggle = document.getElementById('study-dropdown-toggle');
     const productsToggle = document.getElementById('products-dropdown-toggle');
-    const teamToggle = document.getElementById('team-dropdown-toggle');
     const serviceMenu = document.getElementById('services-menu');
     const studyMenu = document.getElementById('study-menu');
     const productsMenu = document.getElementById('products-menu');
-    const teamMenu = document.getElementById('team-menu');
-    const dropdownMenus = [productsMenu, serviceMenu, studyMenu, teamMenu].filter(Boolean);
+    const dropdownMenus = [productsMenu, serviceMenu, studyMenu].filter(Boolean);
 
     // Sticky Header Scroll Transition
     const checkScroll = () => {
@@ -91,19 +89,16 @@ window.App = {
       });
     }
 
-    [productsToggle, teamToggle].forEach((toggle, index) => {
-      const menu = index === 0 ? productsMenu : teamMenu;
-      if (toggle && menu) {
-        toggle.addEventListener('click', (e) => {
-          if (isMobile()) {
-            e.preventDefault();
-            e.stopPropagation();
-            dropdownMenus.forEach(dropdown => dropdown.classList.remove('is-open'));
-            menu.classList.toggle('is-open');
-          }
-        });
-      }
-    });
+    if (productsToggle && productsMenu) {
+      productsToggle.addEventListener('click', (e) => {
+        if (isMobile()) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdownMenus.forEach(dropdown => dropdown.classList.remove('is-open'));
+          productsMenu.classList.toggle('is-open');
+        }
+      });
+    }
 
     // Close mobile menu when clicking outside or clicking any nav link
     document.addEventListener('click', () => {
@@ -117,7 +112,7 @@ window.App = {
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (isMobile()) {
-          if ([productsToggle, serviceToggle, studyToggle, teamToggle].includes(link)) return;
+          if ([productsToggle, serviceToggle, studyToggle].includes(link)) return;
           if (hamburger) hamburger.classList.remove('is-active');
           if (navLinks) navLinks.classList.remove('is-open');
         }

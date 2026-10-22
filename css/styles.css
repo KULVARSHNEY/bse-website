@@ -2,45 +2,52 @@
 
 /* --- Design Tokens & Variables (Brand System) --- */
 :root {
-  /* 1. Primary Brand Palette (Logo Colors) */
-  --color-primary: #2e39ff;
-  /* Vivid Electric Purple: Main brand identity, icons, navigation links, primary buttons */
-  --color-primary-hover: #5500AB;
-  --color-secondary: #A01582;
-  /* Magenta / Electric Violet: Gradient mid-tones, hover states, secondary highlights */
-  --color-secondary-hover: #820E68;
-  --color-accent: #EE2C38;
-  /* Energetic Red-Orange: Important CTA buttons, badges, alerts */
-  --color-accent-hover: #D71F2B;
-  --color-cta: #EE2C38;
-  /* Dedicated CTA Token */
-  --color-cta-hover: #D71F2B;
+  /* 1. Primary Brand Palette (Professional Electrical & Energy Engineering) */
+  --color-primary: #0F3B66;
+  /* Deep Technical Navy: Authoritative, stable, industrial engineering identity */
+  --color-primary-rgb: 15, 59, 102;
+  --color-primary-hover: #0A2847;
+
+  --color-secondary: #0284C7;
+  /* Electric Energy Sky Blue: Technical highlights, active power waveforms, instrumentation */
+  --color-secondary-rgb: 2, 132, 199;
+  --color-secondary-hover: #0369A1;
+
+  --color-accent: #D97706;
+  /* Warm Electrical Amber Gold: Matches KRAPALI brand typography, power sparks, key CTAs */
+  --color-accent-rgb: 217, 119, 6;
+  --color-accent-hover: #B45309;
+  --color-accent-light: #FBBF24;
+
+  --color-cta: #D97706;
+  --color-cta-hover: #B45309;
 
   /* Typography / Text */
-  --color-text: #121212;
-  /* Charcoal Black: Headings & body text */
-  --color-muted: #555555;
-  /* Medium Grey for secondary copy */
-  --color-dark: #121212;
-  /* Dark Charcoal for footers and headers */
+  --color-text: #1E293B;
+  /* Slate 800: Soothing, high-contrast, non-glare body text */
+  --color-muted: #64748B;
+  /* Slate 500: Medium slate for subtitles and technical notes */
+  --color-dark: #07172A;
+  /* Deep Technical Slate for footers, topbars, and contrast surfaces */
 
-  /* 2. Supporting Neutrals (For Web Layout) */
+  /* 2. Supporting Neutrals */
   --color-bg: #FFFFFF;
-  /* Pure White - Primary Background */
-  --color-light-bg: #F7F8FA;
-  /* Soft Off-White / Light Gray - Secondary Background for alternating sections */
+  /* Crisp White */
+  --color-light-bg: #F8FAFC;
+  /* Slate 50: Soothing alternating section background */
   --color-border: #E2E8F0;
-  /* Light Slate - Crisp UI borders and card outlines */
-  --color-success: #28A745;
-  --color-error: #EE2C38;
+  /* Slate 200: Elegant UI divider lines */
+  --color-success: #059669;
+  --color-error: #DC2626;
 
-  /* 3. Suggested Brand Gradients */
-  --gradient-brand: linear-gradient(135deg, #6B00D7 0%, #A01582 50%, #EE2C38 100%);
-  --gradient-subtle: linear-gradient(135deg, rgba(107, 0, 215, 0.08) 0%, rgba(238, 44, 56, 0.08) 100%);
-  --gradient-hover: linear-gradient(135deg, #5500AB 0%, #820E68 50%, #D71F2B 100%);
-  --gradient-dark: linear-gradient(135deg, #121212 0%, #200538 50%, #35006b 100%);
+  /* 3. Brand Gradients */
+  --gradient-brand: linear-gradient(135deg, #0F3B66 0%, #0284C7 60%, #D97706 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(15, 59, 102, 0.05) 0%, rgba(217, 119, 6, 0.05) 100%);
+  --gradient-hover: linear-gradient(135deg, #0A2847 0%, #0369A1 60%, #B45309 100%);
+  --gradient-dark: linear-gradient(135deg, #07172A 0%, #0B2545 60%, #0F3B66 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(7, 23, 42, 0.90) 0%, rgba(15, 59, 102, 0.82) 100%);
 
-  --font-heading: 'Poppins', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --transition-fast: 0.2s ease;
@@ -58,75 +65,6 @@
   padding: 0;
 }
 
-/* --- Custom Cursor --- */
-/* Hide default cursor on non-touch devices */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
-
-#cursor-dot,
-#cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 99999;
-  border-radius: 50%;
-  transition: opacity 0.3s ease;
-  will-change: transform;
-}
-
-/* Small solid dot — snaps exactly to cursor */
-#cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-accent);
-  box-shadow: 0 0 8px rgba(238, 44, 56, 0.7);
-  transition: opacity 0.3s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-}
-
-/* Larger hollow ring — lags behind via JS lerp */
-#cursor-ring {
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(107, 0, 215, 0.55);
-  background-color: transparent;
-  transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease,
-    border-color 0.25s ease, transform 0.05s linear;
-}
-
-/* Hover state — ring expands, dot shrinks */
-#cursor-ring.cursor-hover {
-  width: 56px;
-  height: 56px;
-  border-color: var(--color-accent);
-  background-color: rgba(238, 44, 56, 0.08);
-}
-
-#cursor-dot.cursor-hover {
-  width: 5px;
-  height: 5px;
-  background-color: #ffffff;
-}
-
-/* Click state — ring pulses inward */
-#cursor-ring.cursor-click {
-  width: 32px;
-  height: 32px;
-  border-color: var(--color-accent);
-  background-color: rgba(238, 44, 56, 0.18);
-}
-
-/* Hide on touch devices */
-@media (pointer: coarse) {
-
-  #cursor-dot,
-  #cursor-ring {
-    display: none;
-  }
-}
 
 html {
   scroll-behavior: smooth;
@@ -287,7 +225,7 @@ video {
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(107, 0, 215, 0.35);
+  box-shadow: 0 4px 15px rgba(15, 59, 102, 0.3);
 }
 
 .btn-accent {
@@ -298,7 +236,7 @@ video {
 .btn-accent:hover {
   background-color: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(238, 44, 56, 0.4);
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.35);
 }
 
 .btn-gradient {
@@ -310,7 +248,7 @@ video {
 .btn-gradient:hover {
   background: var(--gradient-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 18px rgba(238, 44, 56, 0.45);
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35);
 }
 
 .btn-outline {
@@ -323,7 +261,7 @@ video {
   background-color: var(--color-primary);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(107, 0, 215, 0.25);
+  box-shadow: 0 4px 15px rgba(15, 59, 102, 0.25);
 }
 
 .btn-sm {
@@ -353,11 +291,11 @@ header.scrolled {
 
 /* ---- TOP INFO BAR ---- */
 .header-topbar {
-  background-color: #1a1a2e;
+  background-color: #07172A;
   height: var(--topbar-height);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .topbar-container {
@@ -377,7 +315,7 @@ header.scrolled {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.8rem;
   font-weight: 500;
   transition: color var(--transition-fast);
@@ -386,7 +324,7 @@ header.scrolled {
 
 .topbar-contact-item i {
   font-size: 0.78rem;
-  color: var(--color-accent);
+  color: var(--color-accent-light);
 }
 
 .topbar-contact-item:hover {
@@ -401,7 +339,7 @@ header.scrolled {
 
 .topbar-follow-label {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.6);
   margin-right: 0.35rem;
   font-weight: 500;
 }
@@ -414,7 +352,7 @@ header.scrolled {
   height: 24px;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.7rem;
   transition: all var(--transition-fast);
 }
@@ -427,7 +365,7 @@ header.scrolled {
 
 /* ---- MAIN NAV BAR ---- */
 .header-navbar {
-  background-color: #020217;
+  background-color: #0B2545;
   height: var(--navbar-height);
   display: flex;
   align-items: center;
@@ -491,7 +429,7 @@ nav {
 .nav-link {
   font-family: var(--font-heading);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.97rem;
   display: flex;
   align-items: center;
@@ -504,12 +442,12 @@ nav {
 }
 
 .nav-link:hover {
-  color: var(--color-accent);
-  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-accent-light);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-item.active .nav-link {
-  color: var(--color-accent);
+  color: var(--color-accent-light);
   font-weight: 700;
 }
 
@@ -520,8 +458,9 @@ nav {
   left: 0;
   background-color: #ffffff;
   min-width: 260px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(15, 59, 102, 0.12);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
   border-top: 3px solid var(--color-accent);
   opacity: 0;
   visibility: hidden;
@@ -1175,6 +1114,228 @@ nav {
   color: var(--color-muted);
   margin: 0;
   line-height: 1.4;
+}
+
+/* --- Dedicated Company Associations Page Styles --- */
+.associations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.association-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 50, 98, 0.04);
+}
+
+.association-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-primary);
+  transition: all var(--transition-fast);
+}
+
+.association-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 50, 98, 0.08);
+  border-color: rgba(254, 111, 94, 0.4);
+}
+
+.association-card:hover::before {
+  background-color: var(--color-accent);
+  height: 5px;
+}
+
+.association-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.association-logo-wrap {
+  width: 120px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbfcfd;
+  border-radius: 6px;
+  border: 1px solid #edf1f5;
+  padding: 0.5rem;
+}
+
+.association-logo-wrap img {
+  max-width: 100%;
+  max-height: 55px;
+  object-fit: contain;
+}
+
+.association-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.6rem;
+}
+
+.association-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: rgba(254, 111, 94, 0.08);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.85rem;
+}
+
+.association-desc {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.association-card-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.association-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #059669;
+  font-weight: 600;
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.sector-card {
+  background: #ffffff;
+  padding: 2.2rem 1.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.sector-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 25px rgba(0, 50, 98, 0.06);
+}
+
+.sector-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(0, 50, 98, 0.06);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.sector-card:hover .sector-icon {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.sector-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-primary);
+}
+
+.sector-card p {
+  font-size: 0.92rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.association-cta-box {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #001f3f 100%);
+  border-radius: 12px;
+  padding: 4rem 3rem;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 50, 98, 0.2);
+}
+
+.association-cta-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.association-cta-content h2 {
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.association-cta-content h2::after {
+  display: none;
+}
+
+.association-cta-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.association-cta-actions {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .associations-grid,
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .associations-grid,
+  .sectors-grid {
+    grid-template-columns: 1fr;
+  }
+  .association-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* --- Why Choose Us Section --- */

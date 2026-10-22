@@ -84,6 +84,15 @@ window.Router = {
       } else {
         pageContentHtml = this.render404();
       }
+    } else if (hash === '#/company-associations' || hash === '#/associations') {
+      // Company Associations Dedicated Page
+      pageContentHtml = `
+        <main>
+          ${window.Components.CompanyAssociationsPage()}
+        </main>
+      `;
+      seoTitle = "Company Associations & Valued Clients | " + window.CONFIG.company.name;
+      seoDesc = "Explore Krapali Electro Craft's valued company associations with Indian Air Force, Indian Railways, Ministry of Defence, and premier manufacturers.";
     } else if (hash === '#/contact') {
       // Contact Us Page
       pageContentHtml = `

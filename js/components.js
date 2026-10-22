@@ -6,12 +6,11 @@ window.Components = {
     const services = Object.values(window.CONFIG.services).sort((a, b) => a.navOrder - b.navOrder);
     const studies = Object.values(window.CONFIG.studies);
     const products = Array.isArray(window.CONFIG.products) ? window.CONFIG.products : Object.values(window.CONFIG.products);
-    const team = window.CONFIG.team;
-    
     // Helper to determine if a route group is active
     const isServicesActive = activePath.startsWith('#/services/');
     const isStudiesActive = activePath.startsWith('#/study/');
     const isProductsActive = activePath.startsWith('#/products/') || activePath.startsWith('#/product/');
+    const isAssociationsActive = activePath === '#/company-associations' || activePath === '#/associations';
     const isHomeActive = activePath === '#/' || activePath === '';
     const isContactActive = activePath === '#/contact';
 
@@ -27,10 +26,6 @@ window.Components = {
     // Generate dropdown items for Studies
     const studyItems = studies.map(s => `
       <li><a href="#/study/${s.slug}" class="dropdown-item ${activePath === '#/study/' + s.slug ? 'active' : ''}">${s.title}</a></li>
-    `).join('');
-
-    const teamItems = team.map(member => `
-      <li><a href="#/team/${member.slug}" class="dropdown-item">${member.name}</a></li>
     `).join('');
 
     return `
@@ -102,11 +97,8 @@ window.Components = {
                   </ul>
                 </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" id="team-dropdown-toggle">Our Team <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
-                  <ul class="dropdown-menu" id="team-menu">
-                    ${teamItems}
-                  </ul>
+                <li class="nav-item ${isAssociationsActive ? 'active' : ''}">
+                  <a href="#/company-associations" class="nav-link">Company Associations</a>
                 </li>
 
                 <li class="nav-item ${isContactActive ? 'active' : ''}">
@@ -488,6 +480,7 @@ window.Components = {
             <ul class="footer-links">
               <li><a href="#/">Home</a></li>
               <li><a href="#/#about-us">About Us</a></li>
+              <li><a href="#/company-associations">Company Associations</a></li>
               <li><a href="#/#why-choose-us">Why Choose Us</a></li>
               <li><a href="#/study/thermography">Thermography Study</a></li>
               <li><a href="#/contact">Contact Us</a></li>
@@ -699,11 +692,11 @@ window.Components = {
             </div>
             
             <div>
-              <!-- Photos Section (User requested: "just add section for photos") -->
+              <!-- Photos Section -->
               <div class="product-photos-panel">
                 <div class="product-photos-header">
                   <h4><i class="fa-solid fa-camera"></i> Product Photos</h4>
-                  <span class="photo-count-badge">${photosList.length} Photo${photosList.length === 1 ? '' : 's'}</span>
+                  ${photosList.length > 1 ? `<span class="photo-count-badge">${photosList.length} Photos</span>` : ''}
                 </div>
                 
                 <div class="product-main-photo-frame">
@@ -713,30 +706,25 @@ window.Components = {
                     <div class="photo-placeholder-box" style="display:none;">
                       <i class="fa-solid fa-bolt-lightning"></i>
                       <p><strong>${product.name || product.title}</strong></p>
-                      <small>Product photo preview</small>
                     </div>
                   ` : `
                     <div class="photo-placeholder-box">
                       <i class="fa-solid fa-image"></i>
                       <p><strong>${product.name || product.title}</strong></p>
-                      <small>Add your product photo in <code>images/</code> and set path in <code>data.js</code></small>
                     </div>
                   `}
                 </div>
 
-                <!-- Product Photo Gallery Thumbnails -->
-                <div class="product-gallery-strip">
-                  ${photosList.map((photo, i) => `
-                    <div class="product-gallery-thumb ${i === 0 ? 'active' : ''}" onclick="const feat = document.getElementById('product-featured-image'); if(feat) feat.src = '${photo}'; document.querySelectorAll('.product-gallery-thumb').forEach(el=>el.classList.remove('active')); this.classList.add('active');">
-                      <img src="${photo}" alt="Thumbnail ${i + 1}" loading="lazy">
-                    </div>
-                  `).join('')}
-                  <div class="product-gallery-add-slot" title="Add more product photos in images/ and register them in data.js">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Add Photo</span>
+                ${photosList.length > 1 ? `
+                  <!-- Product Photo Gallery Thumbnails -->
+                  <div class="product-gallery-strip">
+                    ${photosList.map((photo, i) => `
+                      <div class="product-gallery-thumb ${i === 0 ? 'active' : ''}" onclick="const feat = document.getElementById('product-featured-image'); if(feat) feat.src = '${photo}'; document.querySelectorAll('.product-gallery-thumb').forEach(el=>el.classList.remove('active')); this.classList.add('active');">
+                        <img src="${photo}" alt="Thumbnail ${i + 1}" loading="lazy">
+                      </div>
+                    `).join('')}
                   </div>
-                </div>
-                <p class="photo-instructions"><i class="fa-solid fa-circle-info"></i> Photos stored in <code>images/</code> folder</p>
+                ` : ''}
               </div>
 
               <!-- Sidebar Contact Us Box with Contact Us Button -->
@@ -853,6 +841,176 @@ window.Components = {
                   
                   <button type="submit" class="btn btn-accent" style="width: 100%;">Submit Inquiry <i class="fa-solid fa-paper-plane"></i></button>
                 </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  },
+
+  // Company Associations Dedicated Page
+  CompanyAssociationsPage: function() {
+    const company = window.CONFIG.company;
+    const rawCustomers = window.CONFIG.valuableCustomers || [];
+
+    const associationCards = rawCustomers.map(customer => {
+      const isString = typeof customer === 'string';
+      const logo = isString ? customer : (customer.logo || '');
+      let name = !isString && customer.name ? customer.name : '';
+      if (!name && logo) {
+        const filename = logo.split('/').pop().replace(/\.[^/.]+$/, "");
+        name = filename.replace(/[_-]/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+      }
+      const category = (!isString && customer.category) ? customer.category : 'Valued Associate';
+
+      // Specific engagement highlights for prominent organizations
+      let engagementTag = (!isString && customer.engagementTag) ? customer.engagementTag : "Power Quality & Electrical Consulting";
+      let desc = (!isString && customer.desc) ? customer.desc : "Collaborating on advanced power diagnostics, BEE-aligned energy audits, thermal hot-spot profiling, and specialized industrial switchgear solutions.";
+
+      return `
+        <div class="association-card reveal">
+          <div class="association-card-top">
+            <div class="association-logo-wrap">
+              <img src="${logo}" alt="${name} Logo" class="customer-logo-img" loading="lazy"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="customer-logo-fallback" style="display:none;">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>${name}</span>
+              </div>
+            </div>
+            <span class="customer-category">${category}</span>
+          </div>
+          <div class="association-card-body">
+            <h3 class="association-name">${name}</h3>
+            <div class="association-badge">
+              <i class="fa-solid fa-circle-check"></i> ${engagementTag}
+            </div>
+            <p class="association-desc">${desc}</p>
+          </div>
+          <div class="association-card-footer">
+            <span class="association-status"><i class="fa-solid fa-shield-halved"></i> Verified Association</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <!-- Inner Hero -->
+      <section class="inner-hero">
+        <div class="container">
+          <div class="breadcrumbs">
+            <a href="#/">Home</a>
+            <i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>
+            <span style="color:#ffffff;">Company Associations</span>
+          </div>
+          <h1>Company Associations</h1>
+          <p class="subtitle">Trusted long-standing partnerships and technical associations across India's premier defense forces, public sector transport systems, and heavy manufacturing leaders.</p>
+        </div>
+      </section>
+
+      <!-- Trust Metrics Bar -->
+      <section style="background: #ffffff; border-bottom: 1px solid var(--color-border); padding: 2rem 0;">
+        <div class="container">
+          <div class="customers-trust-bar" style="margin-top:0;">
+            <div class="trust-bar-item">
+              <i class="fa-solid fa-shield-halved trust-bar-icon"></i>
+              <div class="trust-bar-text">
+                <h5>Defense & Government Trust</h5>
+                <p>Proudly serving Indian Air Force, Ministry of Defence, and Indian Railways</p>
+              </div>
+            </div>
+            <div class="trust-bar-item">
+              <i class="fa-solid fa-award trust-bar-icon"></i>
+              <div class="trust-bar-text">
+                <h5>Statutory Compliance</h5>
+                <p>BEE, CEA 2010 safety, and IEEE 519 harmonic mitigation standards</p>
+              </div>
+            </div>
+            <div class="trust-bar-item">
+              <i class="fa-solid fa-chart-line trust-bar-icon"></i>
+              <div class="trust-bar-text">
+                <h5>Measurable Impact</h5>
+                <p>Average 12-25% reduction in plant power losses and zero unplanned trips</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Associations Section -->
+      <section class="section">
+        <div class="container">
+          <div class="text-center" style="max-width: 760px; margin: 0 auto 3.5rem;">
+            <div><span class="customers-badge-tag"><i class="fa-solid fa-handshake"></i> Institutional Engagements</span></div>
+            <h2>Our Valued Client Associations</h2>
+            <p style="color: var(--color-muted); font-size: 1.05rem; line-height: 1.7;">
+              From high-security defense bases requiring zero-downtime reliability to massive continuous manufacturing facilities, our certified engineers deliver uncompromising electrical audit and power quality excellence.
+            </p>
+          </div>
+
+          <div class="associations-grid">
+            ${associationCards}
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Industry Sectors Banner -->
+      <section class="section" style="background: #F8FAFC; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+          <div class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">
+            <h2>Sectors We Proudly Serve</h2>
+            <p style="color: var(--color-muted);">Our specialized consulting and custom-built electrical solutions are engineered to meet the unique challenges of diverse high-demand industries.</p>
+          </div>
+
+          <div class="sectors-grid">
+            <div class="sector-card">
+              <div class="sector-icon"><i class="fa-solid fa-jet-fighter"></i></div>
+              <h4>Defense & Aerospace</h4>
+              <p>Critical power reliability, radar substation audits, and secure facility electrical safety compliant with national defense norms.</p>
+            </div>
+            <div class="sector-card">
+              <div class="sector-icon"><i class="fa-solid fa-train"></i></div>
+              <h4>Railways & Public Transit</h4>
+              <p>Traction substation studies, trackside switchgear verification, and predictive thermography for continuous mass transit uptime.</p>
+            </div>
+            <div class="sector-card">
+              <div class="sector-icon"><i class="fa-solid fa-industry"></i></div>
+              <h4>Heavy Process & Cement</h4>
+              <p>Kiln drive harmonics, transformer load balancing, power factor correction, and high-voltage motor protection.</p>
+            </div>
+            <div class="sector-card">
+              <div class="sector-icon"><i class="fa-solid fa-car"></i></div>
+              <h4>Automotive & Robotics</h4>
+              <p>Transient-free RTPFC panels, dynamic welding load compensation, and harmonic filtering for automated robotic lines.</p>
+            </div>
+            <div class="sector-card">
+              <div class="sector-icon"><i class="fa-solid fa-shirt"></i></div>
+              <h4>Textiles & Spinning Mills</h4>
+              <p>Detailed energy benchmarking, inverter drive harmonic studies, and fire risk mitigation through thermal infrared scans.</p>
+            </div>
+            <div class="sector-card">
+              <div class="sector-icon"><i class="fa-solid fa-hospital"></i></div>
+              <h4>Healthcare & Data Centers</h4>
+              <p>Medical-grade isolation transformer deployment, zero-interruption UPS power audits, and harmonic cancellation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partnership CTA -->
+      <section class="section" style="padding: 5rem 0;">
+        <div class="container">
+          <div class="association-cta-box">
+            <div class="association-cta-content">
+              <span class="badge-accent"><i class="fa-solid fa-bolt-lightning"></i> Enterprise Partnership</span>
+              <h2>Associate Your Organization with Krapali Electro Craft</h2>
+              <p>Whether you require a statutory BEE Energy Audit, an urgent thermography hot-spot inspection, or custom-engineered harmonic blocking reactors, our certified engineers are ready to assist.</p>
+              <div class="association-cta-actions">
+                <a href="#/contact" class="btn btn-accent">Request Consultation <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="tel:${company.phone}" class="btn btn-outline" style="color:#ffffff; border-color:rgba(255,255,255,0.4);">
+                  <i class="fa-solid fa-phone"></i> Call Direct: ${company.phone}
+                </a>
               </div>
             </div>
           </div>

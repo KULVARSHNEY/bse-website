@@ -17,6 +17,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Company Associations -->
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/company-associations</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- Services -->
   <url>
     <loc>https://www.bestelectricalsolution.com/#/services/electrical-audit</loc>
@@ -71,6 +79,74 @@
   <url>
     <loc>https://www.bestelectricalsolution.com/#/study/power-factor-study</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Products -->
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/industrial-plug-socket</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/power-distribution-boards</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/polycarbonate-distribution-customised-db</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/rtpfc-panel</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/apfc-panel</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/hybrid-power-quality-system</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/active-filters</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/shunt-reactor-leading-pf-solution</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/detune-harmonics-block-reactors</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/lighting-automation</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bestelectricalsolution.com/#/products/isolation-transformer</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

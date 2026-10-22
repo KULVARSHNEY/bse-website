@@ -31,9 +31,6 @@
 
 <body>
 
-  <!-- Custom Cursor Elements -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
 
   <!-- Main Single Page Application Mounting Point -->
   <div id="app">
@@ -47,63 +44,6 @@
     </div>
   </div>
 
-  <!-- Custom Cursor Animation Script -->
-  <script>
-    (function () {
-      const dot = document.getElementById('cursor-dot');
-      const ring = document.getElementById('cursor-ring');
-
-      // Ring lags behind with lerp
-      let mouseX = -100, mouseY = -100;
-      let ringX = -100, ringY = -100;
-      const LERP = 0.13;
-
-      // Move dot instantly
-      document.addEventListener('mousemove', function (e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.transform = 'translate(' + (mouseX - 4) + 'px, ' + (mouseY - 4) + 'px)';
-      });
-
-      // Animate ring with smooth lag
-      function animateRing() {
-        ringX += (mouseX - ringX) * LERP;
-        ringY += (mouseY - ringY) * LERP;
-        ring.style.transform = 'translate(' + (ringX - 20) + 'px, ' + (ringY - 20) + 'px)';
-        requestAnimationFrame(animateRing);
-      }
-      animateRing();
-
-      // Expand ring on hover over interactive elements
-      const TARGETS = 'a, button, [role="button"], input, select, textarea, label';
-      document.addEventListener('mouseover', function (e) {
-        if (e.target.closest(TARGETS)) {
-          ring.classList.add('cursor-hover');
-          dot.classList.add('cursor-hover');
-        }
-      });
-      document.addEventListener('mouseout', function (e) {
-        if (e.target.closest(TARGETS)) {
-          ring.classList.remove('cursor-hover');
-          dot.classList.remove('cursor-hover');
-        }
-      });
-
-      // Hide cursors when mouse leaves window
-      document.addEventListener('mouseleave', function () {
-        dot.style.opacity = '0';
-        ring.style.opacity = '0';
-      });
-      document.addEventListener('mouseenter', function () {
-        dot.style.opacity = '1';
-        ring.style.opacity = '1';
-      });
-
-      // Click pulse effect
-      document.addEventListener('mousedown', function () { ring.classList.add('cursor-click'); });
-      document.addEventListener('mouseup', function () { ring.classList.remove('cursor-click'); });
-    })();
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
   <script src="js/data.js"></script>
